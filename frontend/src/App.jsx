@@ -1,11 +1,23 @@
-import styles from "./App.module.css";
-import { Navbar } from "./components/NavBar/Navbar";
+import styled, { ThemeProvider } from "styled-components";
+import { darkTheme } from "./utils/Themes";
+import Navbar from "./components/Navbar";
+import { BrowserRouter, Router } from "react-router-dom";
+
+const Body = styled.div`
+  background-color: ${({ theme }) => theme.bg};
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+`;
 
 function App() {
   return (
-    <div className={styles.App}>
-      <Navbar></Navbar>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <BrowserRouter>
+        <Navbar />
+        <Body></Body>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
